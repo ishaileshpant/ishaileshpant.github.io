@@ -1,361 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shailesh Pant - Technical Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shailesh Pant &mdash; Technical Portfolio</title>
 
-  <!-- Open Graph for LinkedIn -->
-  <meta property="og:title" content="Shailesh Pant - Technical Portfolio">
-  <meta property="og:description" content="8 GitHub orgs, 40+ repos, 2 patents. Rust systems, ML infrastructure, distributed systems, and developer tools.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ishaileshpant.github.io">
-  <meta property="og:image" content="https://ishaileshpant.github.io/og-image.png">
+<!-- Open Graph for LinkedIn -->
+<meta property="og:title" content="Shailesh Pant — Technical Portfolio">
+<meta property="og:description" content="Senior Staff Engineer, 19+ years. Distributed systems, ML infrastructure, Kubernetes at Intel, VMware, Walmart, Cisco. 2 USPTO patents, 6 active projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ishaileshpant.github.io">
+<meta property="og:image" content="https://ishaileshpant.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shailesh Pant - Technical Portfolio">
-  <meta name="twitter:description" content="8 GitHub orgs, 40+ repos, 2 patents. Rust systems, ML infrastructure, distributed systems.">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shailesh Pant — Technical Portfolio">
+<meta name="twitter:description" content="Senior Staff Engineer, 19+ years. Distributed systems, ML infrastructure, Kubernetes. 2 USPTO patents.">
+<meta name="twitter:image" content="https://ishaileshpant.github.io/og-image.png">
 
-  <style>
-    :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface2: #334155;
-      --text: #f1f5f9;
-      --text2: #94a3b8;
-      --text3: #64748b;
-      --accent: #3b82f6;
-      --green: #10b981;
-      --purple: #8b5cf6;
-      --orange: #f59e0b;
-      --pink: #ec4899;
-      --cyan: #06b6d4;
-      --red: #ef4444;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0C;
+    --bg-card: #111115;
+    --bg-elevated: #18181E;
+    --text: #E8E6E3;
+    --text-muted: #8A8692;
+    --accent: #C4A35A;
+    --accent-dim: rgba(196,163,90,0.12);
+    --accent-glow: rgba(196,163,90,0.25);
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(196,163,90,0.3);
+    --success: #4ADE80;
+    --blue: #60A5FA;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Hero */
-    .hero {
-      padding: 60px 0 40px;
-      text-align: center;
-      border-bottom: 1px solid var(--surface2);
-    }
-    .hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
-    .hero .tagline { font-size: 1.1rem; color: var(--text2); margin-bottom: 20px; }
-    .hero .stats {
-      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
-    }
-    .hero .stat { text-align: center; }
-    .hero .stat-num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
-    .hero .stat-label { font-size: 0.85rem; color: var(--text3); }
-    .links { margin-top: 20px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .links a {
-      padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
-      border: 1px solid var(--surface2); color: var(--text2); transition: all 0.2s;
-    }
-    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  html { scroll-behavior: smooth; }
 
-    /* Sections */
-    section { padding: 48px 0; border-bottom: 1px solid var(--surface2); }
-    section:last-child { border-bottom: none; }
-    .section-title {
-      font-size: 1.4rem; font-weight: 700; margin-bottom: 24px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-title .dot { width: 8px; height: 8px; border-radius: 50%; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    /* Project cards */
-    .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-    .card {
-      background: var(--surface); border-radius: 12px; padding: 24px;
-      border: 1px solid transparent; transition: border-color 0.2s;
-    }
-    .card:hover { border-color: var(--surface2); }
-    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-    .card h3 { font-size: 1.1rem; font-weight: 600; }
-    .card .org-badge {
-      font-size: 0.7rem; padding: 2px 8px; border-radius: 10px;
-      background: var(--surface2); color: var(--text3); white-space: nowrap;
-    }
-    .card p { color: var(--text2); font-size: 0.9rem; margin-bottom: 12px; }
-    .card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .card .tag {
-      font-size: 0.75rem; padding: 2px 10px; border-radius: 6px;
-      background: rgba(59, 130, 246, 0.1); color: var(--accent);
-    }
-    .card .tag.green { background: rgba(16, 185, 129, 0.1); color: var(--green); }
-    .card .tag.purple { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
-    .card .tag.orange { background: rgba(245, 158, 11, 0.1); color: var(--orange); }
-    .card .tag.pink { background: rgba(236, 72, 153, 0.1); color: var(--pink); }
-    .card .tag.cyan { background: rgba(6, 182, 212, 0.1); color: var(--cyan); }
-    .card .metrics { display: flex; gap: 16px; margin-top: 10px; }
-    .card .metric { font-size: 0.8rem; color: var(--text3); }
-    .card .metric strong { color: var(--green); }
+  /* --- NAV --- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: rgba(10,10,12,0.82);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
 
-    /* Tech stack */
-    .tech-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tech-item {
-      padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500;
-      background: var(--surface); color: var(--text2);
-    }
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(196,163,90,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(96,165,250,0.03) 0%, transparent 50%);
+    animation: drift 20s ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-2%, 1%) rotate(1deg); }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 860px; text-align: center; }
+  .hero-label {
+    display: inline-block; font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1px solid var(--accent-dim); padding: 0.4rem 1.2rem; border-radius: 100px;
+    margin-bottom: 2rem; background: var(--accent-dim);
+    animation: fadeUp 0.8s ease-out both;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1; margin-bottom: 1.5rem; color: var(--text);
+    animation: fadeUp 0.8s ease-out 0.15s both;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.15rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 2.5rem;
+    line-height: 1.7; font-weight: 300;
+    animation: fadeUp 0.8s ease-out 0.3s both;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease-out 0.45s both;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: var(--serif); font-size: 2.2rem; color: var(--accent); display: block; }
+  .hero-stat .label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
-    /* Patents */
-    .patent-card {
-      background: var(--surface); border-radius: 12px; padding: 24px; margin-bottom: 16px;
-      border-left: 3px solid var(--purple);
-    }
-    .patent-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-    .patent-card p { color: var(--text2); font-size: 0.9rem; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    /* Footer */
-    footer { padding: 32px 0; text-align: center; color: var(--text3); font-size: 0.85rem; }
+  /* --- SECTIONS --- */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 4rem; }
+  .section-label {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; }
 
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 1.8rem; }
-      .hero .stats { gap: 20px; }
-      .projects { grid-template-columns: 1fr; }
-    }
-  </style>
+  /* --- PROJECTS --- */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .project-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-dim); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1.25rem;
+  }
+  .project-card h3 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.3rem; }
+  .project-card .domain { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 1rem; display: block; }
+  .project-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.25rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+    padding: 0.3rem 0.7rem; border-radius: 6px;
+    background: var(--bg-elevated); color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .project-links { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+  .project-links a {
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+    color: var(--accent); text-decoration: none;
+    padding: 0.4rem 0.9rem; border-radius: 8px;
+    border: 1px solid var(--accent-dim);
+    transition: all 0.2s;
+  }
+  .project-links a:hover { background: var(--accent-dim); border-color: var(--accent); }
+
+  /* Highlight card */
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(196,163,90,0.04) 100%);
+  }
+  .project-card.featured .project-meta { display: flex; flex-direction: column; justify-content: center; }
+  .project-card.featured .project-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-box {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    padding: 1rem; border-radius: 10px; text-align: center;
+  }
+  .stat-box .val { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); display: block; }
+  .stat-box .desc { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* --- EXPERIENCE --- */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 24px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item { position: relative; padding-left: 64px; margin-bottom: 3rem; }
+  .timeline-dot {
+    position: absolute; left: 16px; top: 6px;
+    width: 17px; height: 17px; border-radius: 50%;
+    border: 2px solid var(--accent); background: var(--bg);
+  }
+  .timeline-item.current .timeline-dot { background: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+  .timeline-date { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .timeline-role { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.15rem; }
+  .timeline-company { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .timeline-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.75; max-width: 680px; }
+
+  /* --- PATENTS --- */
+  .patents-grid { display: grid; gap: 1.25rem; }
+  .patent-card {
+    display: flex; align-items: flex-start; gap: 1.5rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.75rem;
+    transition: border-color 0.3s;
+  }
+  .patent-card:hover { border-color: var(--border-hover); }
+  .patent-num {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+    color: var(--accent); background: var(--accent-dim);
+    padding: 0.5rem 0.8rem; border-radius: 8px; white-space: nowrap;
+  }
+  .patent-card h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .patent-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.65; }
+
+  /* --- CONTACT --- */
+  .contact-section { text-align: center; padding: 8rem 2rem; }
+  .contact-links { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1.5rem; border-radius: 12px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+  .contact-link .icon { font-size: 1.1rem; }
+
+  /* --- FOOTER --- */
+  footer {
+    text-align: center; padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.25rem; }
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">SP</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#patents">Patents</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <div class="hero">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Founder &middot; Architect &middot; Builder</div>
     <h1>Shailesh Pant</h1>
-    <p class="tagline">Systems engineer building infrastructure software. Rust, Go, ML pipelines, distributed systems.</p>
-    <div class="stats">
-      <div class="stat"><div class="stat-num">8</div><div class="stat-label">GitHub Orgs</div></div>
-      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Repositories</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Patents</div></div>
-      <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Automated Tests</div></div>
-    </div>
-    <div class="links">
-      <a href="https://www.linkedin.com/in/shaileshpant">LinkedIn</a>
-      <a href="https://github.com/ishaileshpant">GitHub</a>
+    <p class="hero-sub">
+      Senior Staff Engineer with 19+ years building distributed systems, ML infrastructure, and cloud-native platforms at Intel, VMware, Walmart, and Cisco. Currently building the next layer of intelligent infrastructure.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">19+</span><span class="label">Years Experience</span></div>
+      <div class="hero-stat"><span class="num">6</span><span class="label">Active Projects</span></div>
+      <div class="hero-stat"><span class="num">2</span><span class="label">USPTO Patents</span></div>
+      <div class="hero-stat"><span class="num">4</span><span class="label">Enterprise Orgs</span></div>
     </div>
   </div>
+</section>
 
-  <!-- Featured Projects -->
-  <section>
-    <div class="section-title"><span class="dot" style="background:var(--green)"></span> Featured Projects</div>
-    <div class="projects">
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/sreniatnoc/rusd">rusd</a></h3>
-          <span class="org-badge">sreniatnoc</span>
-        </div>
-        <p>Drop-in etcd replacement in Rust. Runs Kubernetes 10x faster on deploy+scale. Multi-node Raft consensus with leader election, log replication, and failover.</p>
-        <div class="tags">
-          <span class="tag">Rust</span>
-          <span class="tag green">gRPC</span>
-          <span class="tag purple">Raft</span>
-          <span class="tag orange">MVCC</span>
-        </div>
-        <div class="metrics">
-          <span class="metric"><strong>10.3x</strong> faster K8s deploy</span>
-          <span class="metric"><strong>34/34</strong> K8s compliance</span>
-          <span class="metric"><strong>7/7</strong> Raft tests</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/mlOS-foundation">mlOS</a></h3>
-          <span class="org-badge">mlOS-foundation</span>
-        </div>
-        <p>Universal Operating System for Machine Learning Models. Core engine with Axon toolchain for model lifecycle management. Custom Linux kernel patches.</p>
-        <div class="tags">
-          <span class="tag">Rust</span>
-          <span class="tag green">Linux Kernel</span>
-          <span class="tag purple">ML Inference</span>
-          <span class="tag orange">Axon</span>
-        </div>
-        <div class="metrics">
-          <span class="metric"><strong>E2E</strong> system tests</span>
-          <span class="metric"><strong>Public</strong> releases</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/ARTIFACTIQ">ARTIFACTIQ</a></h3>
-          <span class="org-badge">ARTIFACTIQ</span>
-        </div>
-        <p>AI-powered artifact detection and metadata generation. Computer vision pipeline with trained ML models, dataset tooling, and signed public releases.</p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag pink">Computer Vision</span>
-          <span class="tag purple">YOLO</span>
-          <span class="tag orange">MLOps</span>
-        </div>
-        <div class="metrics">
-          <span class="metric"><strong>Patent</strong> pending</span>
-          <span class="metric"><strong>Signed</strong> releases</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/reccaller-ai/reccall">RecCall</a></h3>
-          <span class="org-badge">reccaller-ai</span>
-        </div>
-        <p>Stop repeating yourself to AI. Persistent context shortcuts for Claude Code, Cursor, VS Code, and Warp. MCP server with 42+ shortcuts.</p>
-        <div class="tags">
-          <span class="tag">TypeScript</span>
-          <span class="tag cyan">MCP</span>
-          <span class="tag green">CLI</span>
-        </div>
-        <div class="metrics">
-          <span class="metric"><strong>42+</strong> shortcuts</span>
-          <span class="metric"><strong>4</strong> IDE integrations</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/traceloop-ai/traceloop">Traceloop</a></h3>
-          <span class="org-badge">traceloop-ai</span>
-        </div>
-        <p>Production-grade observability for AI agents. Trace, monitor, and debug LLM-powered applications with structured telemetry.</p>
-        <div class="tags">
-          <span class="tag">Go</span>
-          <span class="tag cyan">Observability</span>
-          <span class="tag green">OpenTelemetry</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/prepguides/prepguides.dev">PrepGuides</a></h3>
-          <span class="org-badge">prepguides</span>
-        </div>
-        <p>Master technical interviews with interactive diagrams and guides. System design catalog and Go interview project collection.</p>
-        <div class="tags">
-          <span class="tag green">Go</span>
-          <span class="tag">System Design</span>
-          <span class="tag purple">Interviews</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- More Projects -->
-  <section>
-    <div class="section-title"><span class="dot" style="background:var(--accent)"></span> Infrastructure &amp; Libraries</div>
-    <div class="projects">
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/sreniatnoc/rusd">K8sify</a></h3>
-          <span class="org-badge">sreniatnoc</span>
-        </div>
-        <p>Intelligent Docker Compose to Kubernetes migration tool with cost analysis, security scanning, and production patterns.</p>
-        <div class="tags">
-          <span class="tag green">Go</span>
-          <span class="tag">Kubernetes</span>
-          <span class="tag orange">DevOps</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/go-foundations/workerpool">WorkerPool</a></h3>
-          <span class="org-badge">go-foundations</span>
-        </div>
-        <p>Generic Go worker pool library. Clean concurrency patterns with configurable pool size and graceful shutdown.</p>
-        <div class="tags">
-          <span class="tag green">Go</span>
-          <span class="tag">Concurrency</span>
-          <span class="tag cyan">Library</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/fedai-oss/fl-go">FL-Go</a></h3>
-          <span class="org-badge">fedai-oss</span>
-        </div>
-        <p>Federated learning framework in Go. Privacy-preserving distributed ML training across decentralized data sources.</p>
-        <div class="tags">
-          <span class="tag green">Go</span>
-          <span class="tag purple">Federated Learning</span>
-          <span class="tag pink">Privacy</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3><a href="https://github.com/ARTIFACTIQ/claude-remote-bridge">Claude Remote Bridge</a></h3>
-          <span class="org-badge">ARTIFACTIQ</span>
-        </div>
-        <p>Bidirectional remote communication with Claude Code via ntfy. Execute AI-assisted workflows from any device.</p>
-        <div class="tags">
-          <span class="tag">Shell</span>
-          <span class="tag cyan">ntfy</span>
-          <span class="tag purple">AI Tooling</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Patents -->
-  <section>
-    <div class="section-title"><span class="dot" style="background:var(--purple)"></span> Patents &amp; IP</div>
-    <div class="patent-card">
-      <h3>Micro-Model Architecture for Artifact Detection</h3>
-      <p>Novel approach using specialized micro-models for domain-specific artifact identification, achieving higher accuracy with lower computational overhead compared to general-purpose vision models.</p>
-    </div>
-    <div class="patent-card">
-      <h3>Machine Learning Operating System</h3>
-      <p>System and method for a universal operating system layer that abstracts ML model lifecycle management, including deployment, inference optimization, and hardware-aware scheduling.</p>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section>
-    <div class="section-title"><span class="dot" style="background:var(--orange)"></span> Tech Stack</div>
-    <div class="tech-grid">
-      <span class="tech-item">Rust</span>
-      <span class="tech-item">Go</span>
-      <span class="tech-item">Python</span>
-      <span class="tech-item">TypeScript</span>
-      <span class="tech-item">gRPC / Protobuf</span>
-      <span class="tech-item">Raft Consensus</span>
-      <span class="tech-item">Kubernetes</span>
-      <span class="tech-item">Docker</span>
-      <span class="tech-item">Linux Kernel</span>
-      <span class="tech-item">MVCC / B-Trees</span>
-      <span class="tech-item">PyTorch / YOLO</span>
-      <span class="tech-item">OpenTelemetry</span>
-      <span class="tech-item">GitHub Actions CI</span>
-      <span class="tech-item">TLS / mTLS</span>
-      <span class="tech-item">MCP Servers</span>
-      <span class="tech-item">Federated Learning</span>
-    </div>
-  </section>
-
-</div>
-
-<footer>
+<!-- PROJECTS -->
+<section id="projects">
   <div class="container">
-    <p>Shailesh Pant &middot; <a href="https://www.linkedin.com/in/shaileshpant">LinkedIn</a> &middot; <a href="https://github.com/ishaileshpant">GitHub</a></p>
+    <div class="section-header">
+      <div class="section-label">// 01 &mdash; What I&rsquo;m Building</div>
+      <h2 class="section-title">Projects &amp; Initiatives</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- MLOS — Featured -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-icon">&#x2699;</div>
+          <h3>MLOS Foundation</h3>
+          <span class="domain">mlosfoundation.org</span>
+          <p>
+            A purpose-built Machine Learning Operating System with kernel-level optimizations for ML workloads. Includes Axon, an open-source universal model installer supporting HuggingFace, PyTorch Hub, TensorFlow Hub, and ModelScope &mdash; covering 80%+ of the ML ecosystem. Two USPTO provisional patents filed for kernel-level ML optimizations and universal model lifecycle management.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Rust</span>
+            <span class="tag">Python</span>
+            <span class="tag">ONNX</span>
+            <span class="tag">Linux Kernel</span>
+            <span class="tag">HuggingFace</span>
+            <span class="tag">PyTorch</span>
+          </div>
+          <div class="project-links">
+            <a href="https://mlosfoundation.org" target="_blank">Website &rarr;</a>
+            <a href="https://github.com/mlOS-foundation" target="_blank">GitHub &rarr;</a>
+            <a href="https://mlos-foundation.github.io/system-test/" target="_blank">Test Report &rarr;</a>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div class="project-stats">
+            <div class="stat-box"><span class="val">18+</span><span class="desc">Models Tested</span></div>
+            <div class="stat-box"><span class="val">100%</span><span class="desc">Pass Rate</span></div>
+            <div class="stat-box"><span class="val">80%+</span><span class="desc">Ecosystem Coverage</span></div>
+            <div class="stat-box"><span class="val">62ms</span><span class="desc">GPT-2 Inference</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- rusd -->
+      <div class="project-card">
+        <div class="project-icon">&#x26A1;</div>
+        <h3>rusd</h3>
+        <span class="domain">github.com/sreniatnoc/rusd</span>
+        <p>
+          A high-performance, drop-in replacement for etcd written in Rust. Full gRPC API compatibility with etcd v3, MVCC with revision history, Raft consensus with PreVote, and validated against Kubernetes v1.35 with 34/34 compliance tests passing. 1.6x faster writes, 2x less memory, 10x faster K8s deployments.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Rust</span>
+          <span class="tag">gRPC</span>
+          <span class="tag">Raft</span>
+          <span class="tag">MVCC</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">sled</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/sreniatnoc/rusd" target="_blank">GitHub &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Artifactiq -->
+      <div class="project-card">
+        <div class="project-icon">&#x1F441;</div>
+        <h3>Artifactiq.ai</h3>
+        <span class="domain">artifactiq.ai</span>
+        <p>
+          Visual intelligence engine for real-time merchandise detection and catalog matching. Uses a YOLO + CLIP pipeline for video stream analysis &mdash; detect objects, extract embeddings, and match against product catalogs using FAISS. Targeting retail and e-commerce with edge deployment via ONNX Runtime.
+        </p>
+        <div class="project-tags">
+          <span class="tag">YOLOv8</span>
+          <span class="tag">CLIP</span>
+          <span class="tag">FAISS</span>
+          <span class="tag">ONNX</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+        <div class="project-links">
+          <a href="https://artifactiq.ai" target="_blank">Website &rarr;</a>
+        </div>
+      </div>
+
+      <!-- RecCaller -->
+      <div class="project-card">
+        <div class="project-icon">&#x1F50D;</div>
+        <h3>RecCaller.ai</h3>
+        <span class="domain">reccaller.ai</span>
+        <p>
+          MCP server-based context management tool for AI-powered development environments. Lets developers record and recall context shortcuts within tools like Cursor IDE, making agentic AI workflows significantly more efficient.
+        </p>
+        <div class="project-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Cursor IDE</span>
+        </div>
+        <div class="project-links">
+          <a href="https://reccaller.ai" target="_blank">Website &rarr;</a>
+        </div>
+      </div>
+
+      <!-- PrepGuides -->
+      <div class="project-card">
+        <div class="project-icon">&#x1F4DA;</div>
+        <h3>PrepGuides.dev</h3>
+        <span class="domain">prepguides.dev</span>
+        <p>
+          Open-source visual technical interview preparation platform with interactive algorithm visualizations, system design patterns, Kubernetes guides, and a modular content system that allows community contributions via simple GitHub pull requests.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Open Source</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+        <div class="project-links">
+          <a href="https://prepguides.dev" target="_blank">Website &rarr;</a>
+          <a href="https://github.com/prepguides/prepguides.dev" target="_blank">GitHub &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Traceloop -->
+      <div class="project-card">
+        <div class="project-icon">&#x1F50E;</div>
+        <h3>Traceloop-AI.dev</h3>
+        <span class="domain">traceloop-ai.dev</span>
+        <p>
+          Local-first observability platform for AI agents. Focused on LLM monitoring, agent debugging, and trace visualization for agentic AI systems. Designed for developers who need visibility into their AI pipeline without sending data to third parties.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Observability</span>
+          <span class="tag">LLM</span>
+          <span class="tag">Python</span>
+          <span class="tag">OpenTelemetry</span>
+        </div>
+        <div class="project-links">
+          <a href="https://traceloop-ai.dev" target="_blank">Website &rarr;</a>
+        </div>
+      </div>
+
+    </div>
   </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--bg-card);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 02 &mdash; Career</div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jul 2025 &mdash; Present</div>
+        <div class="timeline-role">Founder</div>
+        <div class="timeline-company">MLOS Foundation / Independent &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          Building ML operating system infrastructure, visual intelligence engines, distributed systems in Rust, and developer tooling. Filed 2 USPTO provisional patents. Shipping open-source across 6 concurrent projects spanning kernel-level ML optimization, computer vision, and AI observability.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Aug 2024 &mdash; Jul 2025</div>
+        <div class="timeline-role">Senior Staff Engineer</div>
+        <div class="timeline-company">Intel Corporation &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          Led federated learning innovation on OpenFL &mdash; developed REST-based transport for public cloud, built FedEval for secure cross-institutional model validation. Drove modular architecture improvements to accelerate OpenFL adoption across enterprise and research partners.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jul 2021 &mdash; Aug 2024</div>
+        <div class="timeline-role">Staff Engineer 2 / Master Engineer</div>
+        <div class="timeline-company">VMware &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          Architected TKGm Edge &mdash; a microK8s-based Kubernetes distribution for edge computing. Profiled kube-apiserver and etcd for compute-optimised single-binary K8s bundles. Enhanced GC logic via library injection to fit the full stack under 2 vCPU / 2 GB RAM, reducing memory by 60%.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Dec 2019 &mdash; Jun 2021</div>
+        <div class="timeline-role">Staff Software Engineer</div>
+        <div class="timeline-company">Walmart Global Tech &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          Principal architect of Drug Traceability (DSCSA compliance) deployed across 5,500+ U.S. pharmacies. Designed for regulatory compliance, scalability, and full observability. Enabled CI/CD automation with rollback and recovery across production clusters.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">May 2019 &mdash; Dec 2019</div>
+        <div class="timeline-role">Senior Technical Lead</div>
+        <div class="timeline-company">Cisco Systems &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          Migrated Cisco IT from OpenShift to core Kubernetes with CAPI-style provisioning. Developed backup/recovery with full audit trails for 3,000+ internal applications. Reduced operational SLA from 8 hours to 15 minutes.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2005 &mdash; 2019</div>
+        <div class="timeline-role">Software Engineer &rarr; Architect II</div>
+        <div class="timeline-company">Cisco Systems, L&amp;T Technology Services, OVH Cloud &middot; Bengaluru</div>
+        <div class="timeline-desc">
+          12+ year tenure at Cisco progressing from Software Engineer to Architect II, contributing to NFV, IVP, and OTT video products. Created GoLang-based Microservices Framework used across business units. Finalist in Cisco&rsquo;s Engineering India Leadership Program. Also served as Architect at OVH Cloud and L&amp;T Technology Services.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PATENTS -->
+<section id="patents">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 03 &mdash; Intellectual Property</div>
+      <h2 class="section-title">Patents</h2>
+    </div>
+
+    <div class="patents-grid">
+      <div class="patent-card">
+        <div class="patent-num">USPTO<br>Provisional #1</div>
+        <div>
+          <h4>Kernel-Level Optimizations for Machine Learning Workloads in a Purpose-Built Operating System</h4>
+          <p>ML-specific kernel scheduling, tensor memory management, GPU orchestration, and hardware-aware optimization layers for a purpose-built ML operating system. Filed August 2025.</p>
+        </div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">USPTO<br>Provisional #2</div>
+        <div>
+          <h4>Universal Model Lifecycle Management System</h4>
+          <p>Standard Model Interface (SMI) for cross-repository model installation, ONNX conversion, runtime registration, and unified inference across HuggingFace, PyTorch Hub, TensorFlow Hub, and ModelScope.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background: var(--bg-card);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 04 &mdash; Technical Expertise</div>
+      <h2 class="section-title">Core Competencies</h2>
+    </div>
+
+    <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="project-card" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem;">Languages &amp; Runtimes</h3>
+        <div class="project-tags"><span class="tag">Go</span><span class="tag">Rust</span><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">C</span></div>
+      </div>
+      <div class="project-card" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem;">Infrastructure</h3>
+        <div class="project-tags"><span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">etcd</span><span class="tag">gRPC</span><span class="tag">Raft</span><span class="tag">CAPI</span></div>
+      </div>
+      <div class="project-card" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem;">AI / ML</h3>
+        <div class="project-tags"><span class="tag">PyTorch</span><span class="tag">ONNX</span><span class="tag">OpenFL</span><span class="tag">YOLO</span><span class="tag">CLIP</span><span class="tag">FAISS</span><span class="tag">HuggingFace</span></div>
+      </div>
+      <div class="project-card" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem;">Cloud &amp; DevOps</h3>
+        <div class="project-tags"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">CI/CD</span><span class="tag">GitHub Actions</span><span class="tag">Terraform</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 05 &mdash; Education</div>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+    <div class="patents-grid">
+      <div class="patent-card">
+        <div class="patent-num" style="background: rgba(96,165,250,0.1); color: var(--blue);">B.Tech</div>
+        <div>
+          <h4>Bachelor of Technology, Mechanical Engineering</h4>
+          <p>College of Technology, G.B.P.U.A&amp;T, Pantnagar (1999&ndash;2004)</p>
+        </div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num" style="background: rgba(96,165,250,0.1); color: var(--blue);">DAC</div>
+        <div>
+          <h4>Diploma in Advanced Computing</h4>
+          <p>Professional Certification</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label">// 06 &mdash; Let&rsquo;s Connect</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Get in Touch</h2>
+    <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto;">
+      Open to distinguished engineering roles, founding engineer positions, and technical collaborations for 2026.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:shailesh.pant@gmail.com" class="contact-link"><span class="icon">&#x2709;</span> shailesh.pant@gmail.com</a>
+      <a href="https://linkedin.com/in/shaileshpant" target="_blank" class="contact-link"><span class="icon">&#x1F517;</span> LinkedIn</a>
+      <a href="https://github.com/ishaileshpant" target="_blank" class="contact-link"><span class="icon">&#x2B22;</span> GitHub (ishaileshpant)</a>
+      <a href="https://github.com/pshail" target="_blank" class="contact-link"><span class="icon">&#x2B22;</span> GitHub (pshail)</a>
+      <a href="https://mlosfoundation.org" target="_blank" class="contact-link"><span class="icon">&#x2699;</span> MLOS Foundation</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 Shailesh Pant &middot; Built with intention
 </footer>
 
 </body>
