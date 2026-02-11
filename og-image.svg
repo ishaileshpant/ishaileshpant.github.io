@@ -1,65 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="50%" style="stop-color:#1e293b"/>
-      <stop offset="100%" style="stop-color:#0f172a"/>
+      <stop offset="0%" style="stop-color:#0A0A0C"/>
+      <stop offset="50%" style="stop-color:#111115"/>
+      <stop offset="100%" style="stop-color:#0A0A0C"/>
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#3b82f6"/>
-      <stop offset="100%" style="stop-color:#8b5cf6"/>
+      <stop offset="0%" style="stop-color:#C4A35A"/>
+      <stop offset="100%" style="stop-color:#E8D5A0"/>
     </linearGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
 
   <!-- Accent line top -->
-  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+
+  <!-- Label pill -->
+  <rect x="80" y="100" width="280" height="32" rx="16" fill="none" stroke="#C4A35A" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="220" y="121" fill="#C4A35A" font-size="13" font-weight="500" text-anchor="middle" letter-spacing="3">FOUNDER / ARCHITECT / BUILDER</text>
 
   <!-- Name -->
-  <text x="80" y="160" fill="#f1f5f9" font-size="56" font-weight="700">Shailesh Pant</text>
+  <text x="80" y="195" fill="#E8E6E3" font-size="58" font-weight="700">Shailesh Pant</text>
 
   <!-- Title -->
-  <text x="80" y="210" fill="#94a3b8" font-size="28" font-weight="400">Staff Engineer / Systems Architect</text>
+  <text x="80" y="240" fill="#8A8692" font-size="24" font-weight="300">Senior Staff Engineer  |  19+ Years</text>
 
   <!-- Accent line separator -->
-  <rect x="80" y="240" width="120" height="3" rx="2" fill="url(#accent)"/>
+  <rect x="80" y="265" width="100" height="2" rx="1" fill="#C4A35A"/>
+
+  <!-- Company logos row -->
+  <text x="80" y="315" fill="#8A8692" font-size="16" font-weight="400" letter-spacing="1">Intel  /  VMware  /  Walmart  /  Cisco  /  MLOS Foundation</text>
 
   <!-- Stats row -->
-  <text x="80" y="310" fill="#3b82f6" font-size="42" font-weight="700">8</text>
-  <text x="130" y="310" fill="#94a3b8" font-size="22">GitHub Orgs</text>
+  <text x="80" y="395" fill="#C4A35A" font-size="44" font-weight="700">19+</text>
+  <text x="165" y="395" fill="#8A8692" font-size="20">Years</text>
 
-  <text x="340" y="310" fill="#3b82f6" font-size="42" font-weight="700">40+</text>
-  <text x="420" y="310" fill="#94a3b8" font-size="22">Repositories</text>
+  <text x="300" y="395" fill="#C4A35A" font-size="44" font-weight="700">6</text>
+  <text x="340" y="395" fill="#8A8692" font-size="20">Active Projects</text>
 
-  <text x="620" y="310" fill="#3b82f6" font-size="42" font-weight="700">2</text>
-  <text x="660" y="310" fill="#94a3b8" font-size="22">Patents</text>
-
-  <!-- Featured projects -->
-  <text x="80" y="400" fill="#64748b" font-size="16" font-weight="600" letter-spacing="2">FEATURED PROJECTS</text>
+  <text x="560" y="395" fill="#C4A35A" font-size="44" font-weight="700">2</text>
+  <text x="600" y="395" fill="#8A8692" font-size="20">USPTO Patents</text>
 
   <!-- Project pills -->
-  <rect x="80" y="420" width="120" height="36" rx="18" fill="#1e3a5f"/>
-  <text x="140" y="444" fill="#93c5fd" font-size="16" font-weight="600" text-anchor="middle">rusd</text>
+  <rect x="80" y="440" width="90" height="32" rx="8" fill="#18181E" stroke="#C4A35A" stroke-opacity="0.15"/>
+  <text x="125" y="461" fill="#8A8692" font-size="14" font-weight="500" text-anchor="middle">rusd</text>
 
-  <rect x="220" y="420" width="100" height="36" rx="18" fill="#1e3a5f"/>
-  <text x="270" y="444" fill="#93c5fd" font-size="16" font-weight="600" text-anchor="middle">mlOS</text>
+  <rect x="185" y="440" width="90" height="32" rx="8" fill="#18181E" stroke="#C4A35A" stroke-opacity="0.15"/>
+  <text x="230" y="461" fill="#8A8692" font-size="14" font-weight="500" text-anchor="middle">mlOS</text>
 
-  <rect x="340" y="420" width="160" height="36" rx="18" fill="#1e3a5f"/>
-  <text x="420" y="444" fill="#93c5fd" font-size="16" font-weight="600" text-anchor="middle">ARTIFACTIQ</text>
+  <rect x="290" y="440" width="120" height="32" rx="8" fill="#18181E" stroke="#C4A35A" stroke-opacity="0.15"/>
+  <text x="350" y="461" fill="#8A8692" font-size="14" font-weight="500" text-anchor="middle">Artifactiq</text>
 
-  <rect x="520" y="420" width="130" height="36" rx="18" fill="#1e3a5f"/>
-  <text x="585" y="444" fill="#93c5fd" font-size="16" font-weight="600" text-anchor="middle">RecCall</text>
+  <rect x="425" y="440" width="110" height="32" rx="8" fill="#18181E" stroke="#C4A35A" stroke-opacity="0.15"/>
+  <text x="480" y="461" fill="#8A8692" font-size="14" font-weight="500" text-anchor="middle">RecCaller</text>
 
-  <rect x="670" y="420" width="150" height="36" rx="18" fill="#1e3a5f"/>
-  <text x="745" y="444" fill="#93c5fd" font-size="16" font-weight="600" text-anchor="middle">PrepGuides</text>
+  <rect x="550" y="440" width="130" height="32" rx="8" fill="#18181E" stroke="#C4A35A" stroke-opacity="0.15"/>
+  <text x="615" y="461" fill="#8A8692" font-size="14" font-weight="500" text-anchor="middle">PrepGuides</text>
 
   <!-- Tech stack -->
-  <text x="80" y="510" fill="#475569" font-size="16">Rust  /  Go  /  Python  /  Kubernetes  /  Raft  /  ML/AI  /  Distributed Systems</text>
+  <text x="80" y="530" fill="#5A5664" font-size="15">Rust  /  Go  /  Python  /  Kubernetes  /  Raft  /  ML/AI  /  Distributed Systems</text>
 
   <!-- URL -->
-  <text x="80" y="580" fill="#3b82f6" font-size="20" font-weight="500">ishaileshpant.github.io</text>
+  <text x="80" y="585" fill="#C4A35A" font-size="18" font-weight="500">ishaileshpant.github.io</text>
 
   <!-- Accent line bottom -->
-  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)"/>
+  <rect x="0" y="627" width="1200" height="3" fill="url(#accent)"/>
 </svg>
