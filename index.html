@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shailesh Pant - Technical Portfolio</title>
+
+  <!-- Open Graph for LinkedIn -->
+  <meta property="og:title" content="Shailesh Pant - Technical Portfolio">
+  <meta property="og:description" content="8 GitHub orgs, 40+ repos, 2 patents. Rust systems, ML infrastructure, distributed systems, and developer tools.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ishaileshpant.github.io">
+  <meta property="og:image" content="https://ishaileshpant.github.io/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shailesh Pant - Technical Portfolio">
+  <meta name="twitter:description" content="8 GitHub orgs, 40+ repos, 2 patents. Rust systems, ML infrastructure, distributed systems.">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #334155;
+      --text: #f1f5f9;
+      --text2: #94a3b8;
+      --text3: #64748b;
+      --accent: #3b82f6;
+      --green: #10b981;
+      --purple: #8b5cf6;
+      --orange: #f59e0b;
+      --pink: #ec4899;
+      --cyan: #06b6d4;
+      --red: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--surface2);
+    }
+    .hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
+    .hero .tagline { font-size: 1.1rem; color: var(--text2); margin-bottom: 20px; }
+    .hero .stats {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+    }
+    .hero .stat { text-align: center; }
+    .hero .stat-num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    .hero .stat-label { font-size: 0.85rem; color: var(--text3); }
+    .links { margin-top: 20px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .links a {
+      padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
+      border: 1px solid var(--surface2); color: var(--text2); transition: all 0.2s;
+    }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* Sections */
+    section { padding: 48px 0; border-bottom: 1px solid var(--surface2); }
+    section:last-child { border-bottom: none; }
+    .section-title {
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* Project cards */
+    .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--surface); border-radius: 12px; padding: 24px;
+      border: 1px solid transparent; transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--surface2); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .card h3 { font-size: 1.1rem; font-weight: 600; }
+    .card .org-badge {
+      font-size: 0.7rem; padding: 2px 8px; border-radius: 10px;
+      background: var(--surface2); color: var(--text3); white-space: nowrap;
+    }
+    .card p { color: var(--text2); font-size: 0.9rem; margin-bottom: 12px; }
+    .card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .card .tag {
+      font-size: 0.75rem; padding: 2px 10px; border-radius: 6px;
+      background: rgba(59, 130, 246, 0.1); color: var(--accent);
+    }
+    .card .tag.green { background: rgba(16, 185, 129, 0.1); color: var(--green); }
+    .card .tag.purple { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+    .card .tag.orange { background: rgba(245, 158, 11, 0.1); color: var(--orange); }
+    .card .tag.pink { background: rgba(236, 72, 153, 0.1); color: var(--pink); }
+    .card .tag.cyan { background: rgba(6, 182, 212, 0.1); color: var(--cyan); }
+    .card .metrics { display: flex; gap: 16px; margin-top: 10px; }
+    .card .metric { font-size: 0.8rem; color: var(--text3); }
+    .card .metric strong { color: var(--green); }
+
+    /* Tech stack */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech-item {
+      padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+      background: var(--surface); color: var(--text2);
+    }
+
+    /* Patents */
+    .patent-card {
+      background: var(--surface); border-radius: 12px; padding: 24px; margin-bottom: 16px;
+      border-left: 3px solid var(--purple);
+    }
+    .patent-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .patent-card p { color: var(--text2); font-size: 0.9rem; }
+
+    /* Footer */
+    footer { padding: 32px 0; text-align: center; color: var(--text3); font-size: 0.85rem; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero .stats { gap: 20px; }
+      .projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Shailesh Pant</h1>
+    <p class="tagline">Systems engineer building infrastructure software. Rust, Go, ML pipelines, distributed systems.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">GitHub Orgs</div></div>
+      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Repositories</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Patents</div></div>
+      <div class="stat"><div class="stat-num">120+</div><div class="stat-label">Automated Tests</div></div>
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/shaileshpant">LinkedIn</a>
+      <a href="https://github.com/ishaileshpant">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Featured Projects -->
+  <section>
+    <div class="section-title"><span class="dot" style="background:var(--green)"></span> Featured Projects</div>
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/sreniatnoc/rusd">rusd</a></h3>
+          <span class="org-badge">sreniatnoc</span>
+        </div>
+        <p>Drop-in etcd replacement in Rust. Runs Kubernetes 10x faster on deploy+scale. Multi-node Raft consensus with leader election, log replication, and failover.</p>
+        <div class="tags">
+          <span class="tag">Rust</span>
+          <span class="tag green">gRPC</span>
+          <span class="tag purple">Raft</span>
+          <span class="tag orange">MVCC</span>
+        </div>
+        <div class="metrics">
+          <span class="metric"><strong>10.3x</strong> faster K8s deploy</span>
+          <span class="metric"><strong>34/34</strong> K8s compliance</span>
+          <span class="metric"><strong>7/7</strong> Raft tests</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/mlOS-foundation">mlOS</a></h3>
+          <span class="org-badge">mlOS-foundation</span>
+        </div>
+        <p>Universal Operating System for Machine Learning Models. Core engine with Axon toolchain for model lifecycle management. Custom Linux kernel patches.</p>
+        <div class="tags">
+          <span class="tag">Rust</span>
+          <span class="tag green">Linux Kernel</span>
+          <span class="tag purple">ML Inference</span>
+          <span class="tag orange">Axon</span>
+        </div>
+        <div class="metrics">
+          <span class="metric"><strong>E2E</strong> system tests</span>
+          <span class="metric"><strong>Public</strong> releases</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/ARTIFACTIQ">ARTIFACTIQ</a></h3>
+          <span class="org-badge">ARTIFACTIQ</span>
+        </div>
+        <p>AI-powered artifact detection and metadata generation. Computer vision pipeline with trained ML models, dataset tooling, and signed public releases.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag pink">Computer Vision</span>
+          <span class="tag purple">YOLO</span>
+          <span class="tag orange">MLOps</span>
+        </div>
+        <div class="metrics">
+          <span class="metric"><strong>Patent</strong> pending</span>
+          <span class="metric"><strong>Signed</strong> releases</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/reccaller-ai/reccall">RecCall</a></h3>
+          <span class="org-badge">reccaller-ai</span>
+        </div>
+        <p>Stop repeating yourself to AI. Persistent context shortcuts for Claude Code, Cursor, VS Code, and Warp. MCP server with 42+ shortcuts.</p>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag cyan">MCP</span>
+          <span class="tag green">CLI</span>
+        </div>
+        <div class="metrics">
+          <span class="metric"><strong>42+</strong> shortcuts</span>
+          <span class="metric"><strong>4</strong> IDE integrations</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/traceloop-ai/traceloop">Traceloop</a></h3>
+          <span class="org-badge">traceloop-ai</span>
+        </div>
+        <p>Production-grade observability for AI agents. Trace, monitor, and debug LLM-powered applications with structured telemetry.</p>
+        <div class="tags">
+          <span class="tag">Go</span>
+          <span class="tag cyan">Observability</span>
+          <span class="tag green">OpenTelemetry</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/prepguides/prepguides.dev">PrepGuides</a></h3>
+          <span class="org-badge">prepguides</span>
+        </div>
+        <p>Master technical interviews with interactive diagrams and guides. System design catalog and Go interview project collection.</p>
+        <div class="tags">
+          <span class="tag green">Go</span>
+          <span class="tag">System Design</span>
+          <span class="tag purple">Interviews</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- More Projects -->
+  <section>
+    <div class="section-title"><span class="dot" style="background:var(--accent)"></span> Infrastructure &amp; Libraries</div>
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/sreniatnoc/rusd">K8sify</a></h3>
+          <span class="org-badge">sreniatnoc</span>
+        </div>
+        <p>Intelligent Docker Compose to Kubernetes migration tool with cost analysis, security scanning, and production patterns.</p>
+        <div class="tags">
+          <span class="tag green">Go</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag orange">DevOps</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/go-foundations/workerpool">WorkerPool</a></h3>
+          <span class="org-badge">go-foundations</span>
+        </div>
+        <p>Generic Go worker pool library. Clean concurrency patterns with configurable pool size and graceful shutdown.</p>
+        <div class="tags">
+          <span class="tag green">Go</span>
+          <span class="tag">Concurrency</span>
+          <span class="tag cyan">Library</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/fedai-oss/fl-go">FL-Go</a></h3>
+          <span class="org-badge">fedai-oss</span>
+        </div>
+        <p>Federated learning framework in Go. Privacy-preserving distributed ML training across decentralized data sources.</p>
+        <div class="tags">
+          <span class="tag green">Go</span>
+          <span class="tag purple">Federated Learning</span>
+          <span class="tag pink">Privacy</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3><a href="https://github.com/ARTIFACTIQ/claude-remote-bridge">Claude Remote Bridge</a></h3>
+          <span class="org-badge">ARTIFACTIQ</span>
+        </div>
+        <p>Bidirectional remote communication with Claude Code via ntfy. Execute AI-assisted workflows from any device.</p>
+        <div class="tags">
+          <span class="tag">Shell</span>
+          <span class="tag cyan">ntfy</span>
+          <span class="tag purple">AI Tooling</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Patents -->
+  <section>
+    <div class="section-title"><span class="dot" style="background:var(--purple)"></span> Patents &amp; IP</div>
+    <div class="patent-card">
+      <h3>Micro-Model Architecture for Artifact Detection</h3>
+      <p>Novel approach using specialized micro-models for domain-specific artifact identification, achieving higher accuracy with lower computational overhead compared to general-purpose vision models.</p>
+    </div>
+    <div class="patent-card">
+      <h3>Machine Learning Operating System</h3>
+      <p>System and method for a universal operating system layer that abstracts ML model lifecycle management, including deployment, inference optimization, and hardware-aware scheduling.</p>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section>
+    <div class="section-title"><span class="dot" style="background:var(--orange)"></span> Tech Stack</div>
+    <div class="tech-grid">
+      <span class="tech-item">Rust</span>
+      <span class="tech-item">Go</span>
+      <span class="tech-item">Python</span>
+      <span class="tech-item">TypeScript</span>
+      <span class="tech-item">gRPC / Protobuf</span>
+      <span class="tech-item">Raft Consensus</span>
+      <span class="tech-item">Kubernetes</span>
+      <span class="tech-item">Docker</span>
+      <span class="tech-item">Linux Kernel</span>
+      <span class="tech-item">MVCC / B-Trees</span>
+      <span class="tech-item">PyTorch / YOLO</span>
+      <span class="tech-item">OpenTelemetry</span>
+      <span class="tech-item">GitHub Actions CI</span>
+      <span class="tech-item">TLS / mTLS</span>
+      <span class="tech-item">MCP Servers</span>
+      <span class="tech-item">Federated Learning</span>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>Shailesh Pant &middot; <a href="https://www.linkedin.com/in/shaileshpant">LinkedIn</a> &middot; <a href="https://github.com/ishaileshpant">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
